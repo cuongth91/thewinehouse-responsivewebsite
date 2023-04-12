@@ -1,0 +1,216 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*BANNER1*/
+#bgbanner1 {
+  /* display: flex; */
+  /* align-items: center; */
+/*  height: 90vh;*/
+	padding: 0;
+  /* width: 100%; */
+}
+.carousel-caption h6 {
+  font-family: heading;
+  color: white;
+}
+
+.owl-carousel{
+  width: auto;
+  margin: 0;
+  margin-bottom: 4vh;
+}
+/*CONTENT1*/
+.content1image,
+.content1image2 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+.content1image {
+  background-image: url("../imgs/Sauvignon.jpg");
+  text-align: right;
+}
+.content1image2 {
+  background-image: url("../imgs/Chardonnay2.jpg");
+}
+.content1image h4 {
+  color: white;
+}
+.content1image2 h4,
+.content1image2 p {
+  color: black;
+}
+.content1image a,
+.content1image2 a {
+  text-decoration: underline;
+  font-family: heading;
+  transition: all ease 0.5s;
+}
+.content1image a {
+  color: #e3db99;
+}
+.content1image2 a {
+  color: #77142d;
+}
+#video img {
+  object-fit: cover;
+}
+
+/*------------------------------RESPONSIVE CSS-----------------------------------*/
+
+/*------------------------------XL screen-------------------------------*/
+
+@media (min-width: 1200px) {
+  #bgbanner1 {
+    margin-bottom: 40px;
+  }
+  .carousel-caption{
+    top: 30%;
+    left: 15%;
+    right: auto;
+  }
+  .carousel-caption h1 {
+    font-size: 60px;
+  }
+  .carousel-caption h6 {
+    font-size: 30px;
+  }
+  .content1image,
+  .content1image2 {
+    height: 350px;
+  }
+  .content1image h4 {
+    margin-top: 20vh;
+  }
+  .content1image2 h4 {
+    margin-top: 10vh;
+  }
+  .content1image a:hover {
+    color: white;
+    transition: all ease 0.5s;
+  }
+  .content1image2 a:hover {
+    color: black;
+    transition: all ease 0.5s;
+  }
+  #video {
+    margin-bottom: 40px;
+  }
+}
+
+/*------------------------------LG screen-------------------------------*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  #bgbanner1 {
+    margin-bottom: 40px;
+  }
+  .carousel-caption{
+    top: 25%;
+    left: 13%;
+    right: auto;
+  }
+  .carousel-caption h1 {
+    font-size: 50px;
+  }
+  .carousel-caption h6 {
+    font-size: 30px;
+  }
+  .content1image,
+  .content1image2 {
+    height: 450px;
+  }
+  .content1image h4 {
+    margin-top: 20vh;
+  }
+  .content1image2 h4 {
+    margin-top: 10vh;
+  }
+  .content1image a:hover {
+    color: white;
+    transition: all ease 0.5s;
+  }
+  .content1image2 a:hover {
+    color: black;
+    transition: all ease 0.5s;
+  }
+  #video {
+    margin-bottom: 40px;
+  }
+  .productbox img {
+    height: 300px;
+  }
+}
+
+/*------------------------------MD screen-------------------------------*/
+@media (min-width: 768px) and (max-width: 991px) {
+  #bgbanner1 {
+    margin-bottom: 40px;
+  }
+  #video {
+    margin-bottom: 40px;
+  }
+  .carousel-caption{
+    top: 18%;
+    left: 13%;
+    right: auto;
+  }
+  .carousel-caption h1 {
+    font-size: 40px;
+  }
+  .carousel-caption h6 {
+    font-size: 25px;
+  }
+  .visittour-content {
+    margin-top: 10vh;
+  }
+}
+/*------------------------------SM screen-------------------------------*/
+
+@media (min-width: 576px) and (max-width: 767px) {
+  #bgbanner1 {
+    margin-bottom: 40px;
+  }
+  #video {
+    margin-bottom: 40px;
+  }
+  .carousel-caption{
+    top:15%;
+  }
+  .carousel-item img{
+    opacity: 0.5;
+  }
+  .carousel-caption h1 {
+    font-size: 30px;
+  }
+  .carousel-caption h6 {
+    font-size: 20px;
+  }
+  .carousel-caption p {
+    font-size: 16px;
+  }
+}
+
+/*------------------------------XS screen-------------------------------*/
+
+@media (max-width: 575px) {
+  #bgbanner1 {
+    margin-bottom: 40px;
+  }
+  #video {
+    margin-bottom: 40px;
+  }
+  .carousel-item img{
+    opacity: 0.5;
+  }
+  .carousel-caption h1 {
+    font-size: 20px;
+  }
+  .carousel-caption h6 {
+    font-size: 18px;
+  }
+  .carousel-caption p {
+    font-size: 16px;
+  }
+}

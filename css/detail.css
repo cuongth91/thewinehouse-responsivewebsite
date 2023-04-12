@@ -1,0 +1,295 @@
+@charset "utf-8";
+/* CSS Document */
+
+.layout {
+  background-color: #444444;
+  margin-bottom: 5vh;
+  height: 10vh;
+  border: solid 1pt white;
+}
+.layout2 {
+  background-color: green;
+  border: solid 1pt black;
+}
+
+/*BANNER1*/
+#bgbannerproduct {
+  background-image: url("../imgs/detailproductbackground.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 5vh;
+  display: flex;
+  align-items: center;
+}
+/* product */
+#bgbannerproduct,
+.productimage {
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.detailproductcarousel .owl-item {
+  display: flex;
+  justify-content: center;
+}
+.owl-carousel{
+  margin: 0;
+}
+.owl-carousel .owl-item img{
+  width: auto;
+}
+
+.productimage img{
+  height: 80vh;
+  width: auto;
+}
+/* Product content */
+#bannerproductcontent {
+  display: flex;
+}
+.productcontent h5 {
+  color: white;
+  margin-bottom: 1vh;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: auto;
+  margin-top: -2vh;
+}
+th,
+td {
+  border-bottom: solid 1pt #e3db99;
+  padding-top: 2vh;
+}
+td {
+  text-align: end;
+}
+/* Buy buttons */
+.buyoption {
+  display: flex;
+  justify-content: space-between;
+}
+.buyoption h6 {
+  font-size: 18px;
+}
+.buyoption h4{
+  font-family: heading;
+}
+
+select {
+  appearance: auto;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  color: #77142d;
+  cursor: pointer;
+}
+.buyoption form {
+  display: flex;
+  justify-content: flex-end;
+}
+.buyoption button {
+  float: left;
+  background-color: #e3db99;
+  color: #77142d;
+  outline: none;
+  border: none;
+  height: 3vh;
+  width: 3vh;
+  border-radius: 50%;
+  transition: all ease 0.5s;
+}
+.buyoption input {
+  width: 4vh;
+  height: 3vh;
+  float: left;
+  color: #77142d;
+  outline: none;
+  border: none;
+  text-align: center;
+  border-radius: 20px;
+}
+
+#minusbtn {
+  margin-right: 5px;
+}
+#plusbtn {
+  margin-left: 5px;
+}
+
+/* Small Image Big Image */
+.smallimagebox{
+  margin-bottom: 5vh;
+}
+.smallimagebox img{
+  margin-bottom: 1vh;
+  opacity: 0.5;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.smallimagebox img.active{
+  opacity: 1;
+  border: solid 1pt #e3db99;
+}
+.bigimagebox{
+  margin-bottom: 5vh;
+}
+.bigimagebox img{
+  border-radius: 10px;
+}
+.detailbox{
+  margin-bottom: 5vh;
+}
+.detailbox div.nonactive{
+  display: none;
+}
+.detailbox div.active{
+  display: block;
+}
+
+/* Review */
+#customerreview{
+  margin-bottom: 5vh;
+}
+.reviewbox{
+  border-radius: 10px;
+  border: solid 1pt #e3db99;
+}
+.customeravatar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customeravatar img{
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+}
+.customername{
+  text-align: center;
+}
+.reviewcontent{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.reviewcontent p{
+  font-family: bodyitalic;
+  margin-bottom: 0;
+}
+.owl-carousel .owl-item{
+  opacity: 0.5;
+}
+.owl-carousel .owl-item.active.center{
+  opacity: 1;
+}
+
+/* Suggest product */
+.productcarousel{
+  margin-bottom: 5vh;
+}
+.productcarousel .owl-item{
+  opacity: 1;
+}
+
+/*------------------------------RESPONSIVE CSS-----------------------------------*/
+
+/*------------------------------XL screen-------------------------------*/
+
+@media (min-width: 1200px) {
+  #bannerproductcontent {
+    align-items: center;
+  }
+  .buyoption button:hover {
+    transition: all ease 0.5s;
+    background-color: white;
+    color: black;
+    border: solid 1pt #e3db99;
+  }
+  .buyproduct {
+    margin-top: 12vh;
+  }
+  .smallimagebox{
+    padding-right: 0;
+  }
+}
+
+/*------------------------------LG screen-------------------------------*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  #bannerproductcontent {
+    align-items: center;
+  }
+  .buyoption button:hover {
+    transition: all ease 0.5s;
+    background-color: white;
+    color: black;
+    border: solid 1pt #e3db99;
+  }
+  .buyproduct {
+    margin-top: 12vh;
+  }
+  
+}
+
+/*------------------------------MD screen-------------------------------*/
+@media (min-width: 768px) and (max-width: 991px) {
+  #bannerproductcontent {
+    align-items: center;
+  }
+  .buyproduct {
+    margin-top: 10vh;
+  }
+  .bigimagebox{
+    margin-bottom: 20px;
+  }
+  .smallimagebox img{
+    width: 85px;
+    float: left;
+    margin-right: 15px;
+  }
+  .customeravatar img{
+    width: 50% !important;
+    margin-top: 0;
+  }
+}
+/*------------------------------SM screen-------------------------------*/
+
+@media (min-width: 576px) and (max-width: 767px) {
+  #bannerproductcontent {
+    align-items: flex-start;
+  }
+  .productcontent {
+    margin-top: 5vh;
+  }
+  .buyproduct {
+    margin-top: -40vh;
+  }
+  .customeravatar img{
+    width: 50% !important;
+    margin-top: 0;
+  }
+}
+
+/*------------------------------XS screen-------------------------------*/
+
+@media (max-width: 575px) {
+  #bannerproductcontent {
+    align-items: flex-start;
+  }
+  .productcontent {
+    margin-top: 2vh;
+  }
+  .buyproduct {
+    margin-top: -40vh;
+  }
+  .customeravatar img{
+    width: 50% !important;
+    margin-top: 0;
+  }
+}

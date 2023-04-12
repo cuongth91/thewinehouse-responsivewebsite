@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Franklin Gothic Demi Regular';
+  src: url(./Franklin+Gothic+Demi+Regular.eot);
+  src: url(./Franklin+Gothic+Demi+Regular.eot?#iefix) format('embedded-opentype'),
+       url(./Franklin+Gothic+Demi+Regular.otf) format('otf'),
+       url(./Franklin+Gothic+Demi+Regular.ttf) format('truetype'),
+       url(./Franklin+Gothic+Demi+Regular.woff) format('woff');
+}

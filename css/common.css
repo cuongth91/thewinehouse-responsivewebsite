@@ -1,0 +1,786 @@
+@charset "utf-8";
+/* CSS Document */
+/*FONT*/
+@font-face {
+  font-family: deco;
+  src: url("../Font/deco/ginandtonic.eot"), url("../Font/deco/ginandtonic.ttf"),
+    url("../Font/deco/ginandtonic.woff");
+}
+@font-face {
+  font-family: heading;
+  src: url("../Font/heading/Franklin Gothic Demi Regular.eot"),
+    url("../Font/heading/Franklin Gothic Demi Regular.ttf"),
+    url("../Font/heading/Franklin Gothic Demi Regular.woff");
+}
+@font-face {
+  font-family: bodyregular;
+  src: url("../Font/body regular/Franklin Gothic Book Regular.eot"),
+    url("../Font/body regular/Franklin Gothic Book Regular.ttf"),
+    url("../Font/body regular/Franklin Gothic Book Regular.woff");
+}
+@font-face {
+  font-family: bodyitalic;
+  src: url("../Font/body italic/Franklin Gothic Book Italic.eot"),
+    url("../Font/body italic/Franklin Gothic Book Italic.ttf"),
+    url("../Font/body italic/Franklin Gothic Book Italic.woff");
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: deco;
+  color: #e3db99;
+}
+
+h5,
+h6 {
+  font-family: heading;
+  color: #e3db99;
+}
+body {
+  background-color: black;
+  color: white;
+  font-family: bodyregular;
+  font-size: 16px;
+}
+.generalcontent{
+  margin-bottom: 4vh;
+}
+.generalcontent p{
+  margin-bottom: 2vh;
+}
+.generalcontent img{
+  border-radius: 10px;
+}
+/*CAROUSEL*/
+.carousel-indicators li {
+  width: 1vh;
+  height: 1vh;
+  border-radius: 50%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.carousel-indicators .active {
+  background-color: #e3db99;
+}
+.owl-carousel .active span {
+  background: #e3db99 !important;
+  width: 30px !important;
+}
+
+/* MODAL */
+.modal-content{
+  background-color: black;
+  border: solid 1pt #e3db99;
+  border-radius: 20px;
+}
+.modal-content h5{
+  color: #e3db99;
+  font-size: 25px;
+}
+.modal-backdrop{
+  z-index: 2100;
+}
+.modal{
+  z-index: 2200;
+}
+.modalicons{
+  display: block;
+  float: left;
+  width: 10%;
+  vertical-align: middle;
+  line-height: 40px;
+  text-align: center;
+  background-color: white;
+  color: #77142d;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+#userid, #passid{
+  width: 90%;
+  height: 40px;
+  margin-bottom: 20px;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  outline: none;
+}
+.signinmodalbtn, .cancelmodalbtn{
+  display: block;
+  height: 40px;
+  width: 140px;
+  font-size: 14pt;
+  border: none;
+  transition: all ease .5s;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.signinmodalbtn{
+  background-color: #e3db99;
+  color: #77142d;
+}
+.cancelmodalbtn{
+  background-color: black;
+  border: solid 1px #e3db99;
+  color: white;
+}
+.modal-header{
+  border-bottom: none;
+  justify-content: center;
+}
+.modal-footer{
+  border-top: none;
+  justify-content: center;
+}
+.modal-footer a{
+  color: #e3db99;
+  text-decoration: underline;
+  font-family: bodyitalic;
+  transition: all ease .5s;
+}
+#forgotpassword{
+  text-align: right;
+}
+#forgotpassword a{
+  text-decoration: underline;
+  color: #e3db99;
+  font-family: bodyitalic;
+  transition: all ease .5s;
+}
+/* CHECKBOX */
+.customcheckbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  border-radius: 5px;
+  border: solid 1pt #e3db99;
+}
+.checkbox-label{
+  padding-left: 30px;
+}
+.customcheckbox input:checked ~ .checkmark {
+  background-color: #e3db99;
+  border: solid 1pt #e3db99;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.customcheckbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.customcheckbox .checkmark:after{
+  left: 6px;
+  top: 2px;
+  width: 7px;
+  height: 12px;
+  border: solid #77142d;
+  border-radius: 10%;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  transform: rotate(40deg);
+}
+/* BUTTON */
+.btnbanner {
+  display: inline-block;
+  text-decoration: none;
+  height: 50px;
+  width: 180px;
+  background-color: #e3db99;
+  color: #77142d;
+  font-size: 18px;
+  font-family: heading;
+  vertical-align: middle;
+  line-height: 50px;
+  margin: auto;
+  border-radius: 30px;
+  transition: all ease 0.5s;
+}
+.btnbanner:hover {
+  text-decoration: none;
+  color: #77142d;
+}
+/*HEADER*/
+/*LOGO HEADER*/
+#bgheader,
+#logoheader,
+#navi,
+#search,
+#iconsheader,
+#mobileicons {
+  height: 80px;
+}
+#bgheader {
+  background-color: black;
+  position: sticky;
+  top: 0px;
+  z-index: 2000;
+  transition: all ease 1s;
+}
+#logoheader {
+  text-align: center;
+}
+#logoheader img {
+  height: 70px;
+  margin-top: 5px;
+}
+
+/*NAVI*/
+#navi ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  line-height: 80px;
+}
+#navi ul li a {
+  display: block;
+  text-decoration: none;
+  color: #e3db99;
+  font-family: deco;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: transform 0.5s ease;
+}
+
+/*SEARCH*/
+#search {
+  padding-right: 0;
+}
+#searchfill,
+#searchbtn {
+  height: 25px;
+  margin-top: 26px;
+  outline: none;
+  border: none;
+  color: #77142d;
+  font-size: 14px;
+  background-color: white;
+  float: left;
+}
+#searchfill {
+  width: 80%;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  font-family: bodyitalic;
+}
+#searchbtn {
+  width: 20%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/*HEADER ICONS*/
+.icons ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+}
+.icons ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #e3db99;
+  font-size: 20px;
+  padding-left: 15px;
+  vertical-align: middle;
+  line-height: 80px;
+  transition: transform 0.5s ease;
+}
+
+/*MOBILE ICONS*/
+#mobileicons ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: left;
+}
+#mobileicons ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #e3db99;
+  padding-right: 55px;
+  margin-left: -15px;
+  font-size: 30px;
+  vertical-align: middle;
+  line-height: 80px;
+}
+
+/*MOBILE NAVI*/
+#blackscreen {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  z-index: 1000;
+}
+#bgmobilenavi {
+  position: fixed;
+  z-index: 1900;
+}
+#mobilenavi {
+  padding: 0;
+}
+#mobilenavi ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#mobilenavi ul li {
+  display: block;
+}
+#mobilenavi ul li a {
+  display: inline-block;
+  width: 100vw;
+  height: 80px;
+  text-decoration: none;
+  background-color: #77142d;
+  color: #e3db99;
+  font-family: deco;
+  font-size: 16px;
+  text-align: center;
+  border-bottom: solid 1pt #e3db99;
+  vertical-align: middle;
+  line-height: 80px;
+}
+
+/* MOBILE SEARCH */
+#bgmobilesearch {
+  position: fixed;
+  z-index: 1900;
+  width: 100vw;
+}
+#mobilesearchfill {
+  height: 50px;
+  margin-top: 40px;
+  width: 90%;
+  padding-left: 20px;
+  padding-right: 20px;
+  float: left;
+  outline: none;
+  border: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  font-family: bodyitalic;
+  color: #77142d;
+}
+#mobilesearchbtn {
+  height: 50px;
+  margin-top: 40px;
+  width: 10%;
+  float: left;
+  border: none;
+  outline: none;
+  background-color: white;
+  color: #77142d;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  font-size: 20px;
+}
+
+/*CONTENT*/
+.pagename {
+  margin-bottom: 40px;
+  text-align: center;
+}
+.pagename h5 {
+  font-family: deco;
+}
+.pagename p {
+  margin-bottom: -10px;
+}
+.pagename h4 {
+  font-family: deco;
+}
+.productbox {
+  /* margin-bottom: 40px; */
+  text-align: center;
+}
+.productbox img {
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+.productbox h5 {
+  font-family: deco;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.productbox p {
+  margin-bottom: 10px;
+}
+.productbox h6 {
+  font-family: bodyitalic;
+}
+.productlink img {
+  transition: all ease 0.5s;
+}
+.horizontal-line {
+  border: solid 1px #e3db99;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+.horizontal-line2 {
+  border: solid 1px #e3db99;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/*FOOTER*/
+#bgbannerfooter {
+  background-image: url("../imgs/bannerbottom.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#bgfooter {
+  background-color: #e3db99;
+}
+.footercontent {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+#footerlogo img {
+  width: 70%;
+}
+.footercontent h6 {
+  font-size: 18px;
+  font-family: heading;
+  color: #77142d;
+}
+.footercontent p {
+  color: black;
+}
+.footercontent ul {
+  list-style-type: none;
+  padding: 0;
+}
+.footercontent ul li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+  transition: all ease 0.5s;
+}
+
+/*APP DOWNLOAD*/
+#appledownload {
+  padding: 0;
+  float: left;
+  margin-bottom: 10px;
+}
+#appledownload img {
+  width: 100%;
+}
+#ggplaydownload {
+  padding: 0;
+  float: left;
+  margin-bottom: 20px;
+}
+#ggplaydownload img {
+  width: 100%;
+}
+
+/*SOCIAL MEDIA BTN*/
+#socialmediaicon {
+  margin: 0;
+  padding: 0;
+}
+#socialmediaicon ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+#socialmediaicon ul li a {
+  text-decoration: none;
+  color: #77142d;
+  margin: 0;
+}
+
+/*MOBILE FOOTER*/
+.mobilefootercontent {
+  background-color: #e3db99;
+  height: 80px;
+  vertical-align: middle;
+  line-height: 80px;
+  border-bottom: solid 1pt #77142d;
+  color: #77142d;
+}
+.mobilefootercontent ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.mobilefootercontent ul li {
+  margin-left: auto;
+}
+.mobilefootercontent h6 {
+  font-family: deco;
+  color: #77142d;
+  font-size: 16px;
+  vertical-align: middle;
+  line-height: 80px;
+  padding-left: 10px;
+}
+.mobilefooterlink {
+  background-color: #e3db99;
+  border-bottom: solid 1pt #77142d;
+}
+.mobilefooterlink ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.mobilefooterlink ul li {
+  display: block;
+}
+.mobilefooterlink ul li a {
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+}
+.mobilecopyright {
+  text-align: center;
+  color: black;
+}
+
+/*------------------------------RESPONSIVE CSS-----------------------------------*/
+
+/*------------------------------XL screen-------------------------------*/
+
+@media (min-width: 1200px) {
+  #bgbannerfooter {
+    height: 50vh;
+  }
+  #navi ul li a:hover {
+    transform: scale(1.2);
+  }
+  .icons ul li a:hover {
+    transform: scale(1.2);
+  }
+  .footercontent ul li a:hover {
+    color: #77142d;
+    transform: scale(1.1);
+  }
+  #socialmediaicon ul li a {
+    font-size: 40px;
+  }
+  #socialmediaicon ul li a:hover {
+    transform: scale(1.2);
+  }
+  .productlink img:hover {
+    transform: scale(1.02);
+    transition: all ease 0.5s;
+  }
+  .btnbanner:hover {
+    background-color: white;
+    color: black;
+    border: solid 1pt #e3db99;
+    transition: all ease 0.5s;
+  }
+  .signinmodalbtn:hover, .cancelmodalbtn:hover{
+    transition: all ease .5s;
+    background-color: white;
+    color: black;
+    border: solid 1pt #e3db99;
+  }
+  .modal-footer a:hover, #forgotpassword a:hover{
+    transition: all ease .5s;
+    color: white;
+  }
+  }
+
+/*------------------------------LG screen-------------------------------*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  #bgbannerfooter {
+    height: 50vh;
+  }
+  #navi ul li a {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  #navi ul li a:hover {
+    transform: scale(1.2);
+  }
+  .icons ul li a {
+    padding-left: 12px;
+  }
+  .icons ul li a:hover {
+    transform: scale(1.2);
+  }
+  .footercontent ul li a:hover {
+    color: #77142d;
+    transform: scale(1.1);
+  }
+  .footercontent ul li a {
+    font-size: 14px;
+  }
+  .footercontent p {
+    font-size: 14px;
+  }
+  #footerlogo img {
+    width: 60%;
+  }
+  #socialmediaicon ul li a {
+    font-size: 30px;
+  }
+  #socialmediaicon ul li a:hover {
+    transform: scale(1.2);
+  }
+  .productlink img:hover {
+    transform: scale(1.02);
+    transition: all ease 0.5s;
+  }
+  .btnbanner:hover {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    border: solid 1pt #e3db99;
+    transition: all ease 0.5s;
+  }
+  .generalcontent h4{
+    font-size: 22px;
+  }
+  .signinmodalbtn:hover, .cancelmodalbtn:hover{
+    transition: all ease .5s;
+    background-color: white;
+    color: black;
+    border: solid 1pt #e3db99;
+  }
+  .modal-footer a:hover, #forgotpassword a:hover{
+    transition: all ease .5s;
+    color: white;
+  }
+}
+
+/*------------------------------MD screen-------------------------------*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .pagename {
+    margin-bottom: 40px;
+  }
+  #bgbannerfooter {
+    height: 40vh;
+  }
+  .icons ul li a {
+    font-size: 30px;
+    padding-left: 40px;
+  }
+  .footercontent ul li a {
+    margin-top: 15px;
+  }
+  #socialmediaicon ul li a {
+    font-size: 35px;
+  }
+  #mobilesearchfill {
+    width: 90%;
+  }
+  #mobilesearchbtn {
+    width: 10%;
+  }
+}
+
+/*------------------------------SM screen-------------------------------*/
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .pagename {
+    margin-bottom: 40px;
+  }
+  #bgbannerfooter {
+    height: 40vh;
+  }
+  .icons ul li a {
+    font-size: 30px;
+    padding-left: 40px;
+  }
+  #appledownload img {
+    width: 70%;
+    margin-top: 7px;
+  }
+  #ggplaydownload img {
+    width: 70%;
+  }
+  #socialmediaicon ul li a {
+    font-size: 50px;
+    margin-top: -10px;
+  }
+  .mobilecopyright {
+    margin-top: -70px;
+  }
+  #bgfootercontent {
+    padding: 0;
+  }
+  #mobilesearchfill {
+    width: 88%;
+  }
+  #mobilesearchbtn {
+    width: 12%;
+  }
+}
+
+/*------------------------------XS screen-------------------------------*/
+
+@media (max-width: 575px) {
+  .pagename {
+    margin-bottom: 40px;
+  }
+  #bgbannerfooter {
+    height: 40vh;
+  }
+  .icons ul li a {
+    font-size: 30px;
+    padding-left: 40px;
+    margin-right: -15px;
+  }
+  #mobileicons ul li a {
+    padding-right: 40px;
+  }
+  #socialmediaicon ul li a {
+    font-size: 45px;
+    margin-top: -14px;
+  }
+  .mobilecopyright {
+    margin-top: -70px;
+    font-size: 14px;
+    padding: 0;
+  }
+  #bgfootercontent {
+    padding: 0;
+  }
+  #mobilesearchfill {
+    width: 85%;
+  }
+  #mobilesearchbtn {
+    width: 15%;
+  }
+  .generalcontent h4{
+    font-size: 18px;
+  }
+}

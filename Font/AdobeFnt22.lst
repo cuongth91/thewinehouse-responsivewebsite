@@ -1,0 +1,163 @@
+%!Adobe-FontList 1.22
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GinAndTonicPERSONALUSE-Italic
+FamilyName:Gin And Tonic PERSONAL USE
+StyleName:Italic
+FullName:Gin And Tonic PERSONAL USE Italic
+MenuName:Gin And Tonic PERSONAL USE
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\GinAndTonicItalic_PERSONAL_USE_ONLY.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:192196
+FileModTime:1636667846
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Gin And Tonic PERSONAL USE Italic
+NameArray:0,Win,1,Gin And Tonic PERSONAL USE
+NameArray:0,Win,16,Gin And Tonic PERSONAL USE
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GinAndTonicOutPERSONAL-Italic
+FamilyName:Gin And Tonic Out PERSONAL
+StyleName:Italic
+FullName:Gin And Tonic Out PERSONAL Italic
+MenuName:Gin And Tonic Out PERSONAL
+StyleBits:1
+WritingScript:Roman
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\GinAndTonicOutItalic_PERSONAL_USE_ONLY.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:299060
+FileModTime:1636667855
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Gin And Tonic Out PERSONAL Italic
+NameArray:0,Win,1,Gin And Tonic Out PERSONAL
+NameArray:0,Win,16,Gin And Tonic Out PERSONAL
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GinAndTonicOutPERSONAL-Regular
+FamilyName:Gin And Tonic Out PERSONAL
+StyleName:Regular
+FullName:Gin And Tonic Out PERSONAL Regular
+MenuName:Gin And Tonic Out PERSONAL
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\GinAndTonicOut_PERSONAL_USE_ONLY.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:278576
+FileModTime:1636667852
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Gin And Tonic Out PERSONAL Regular
+NameArray:0,Win,1,Gin And Tonic Out PERSONAL
+NameArray:0,Win,16,Gin And Tonic Out PERSONAL
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:GinAndTonicPERSONALUSE-Regular
+FamilyName:Gin And Tonic PERSONAL USE
+StyleName:Regular
+FullName:Gin And Tonic PERSONAL USE Regular
+MenuName:Gin And Tonic PERSONAL USE
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\GinAndTonic_PERSONAL_USE_ONLY.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:181888
+FileModTime:1636667844
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Gin And Tonic PERSONAL USE Regular
+NameArray:0,Win,1,Gin And Tonic PERSONAL USE
+NameArray:0,Win,16,Gin And Tonic PERSONAL USE
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\READ_BEFORE_ANY_USE.txt
+FileModTime:1637617773
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\img\gin-and-tonic_flag.png
+FileModTime:1636704834
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\img\gin-and-tonic_poster01.png
+FileModTime:1636704807
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\img\gin-and-tonic_poster02.png
+FileModTime:1636704545
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\img\gin-and-tonic_poster03.png
+FileModTime:1636704501
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\img\gin-and-tonic_poster04.png
+FileModTime:1636704468
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\img\gin-and-tonic_poster05.png
+FileModTime:1636704431
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:C:\Users\cloud\OneDrive - Đại học FPT- FPT University\SEM2\3.XD\ASM\Font\gin_and_tonic\img\gin-and-tonic_poster06.png
+FileModTime:1637314948
+%EndFont
+
