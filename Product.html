@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ProductPage</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet" />
+
+    <!-- Style CSS -->
+    <link href="css/common.css" rel="stylesheet" />
+    <link href="css/product.css" rel="stylesheet" />
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="js/owlcarousel/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="js/owlcarousel/assets/owl.theme.default.min.css" />
+
+    <!-- Fontawesome-->
+    <link href="css/css/all.min.css" rel="stylesheet" />
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="js/owlcarousel/owl.carousel.min.js"></script>
+    <!---------------------------------------------------------------------------------->
+    <!--	  JQUERY-->
+    <script>
+      $(document).ready(function () {
+        $("#mobilenavi").hide();
+        $("#blackscreen").hide();
+        $("#bgmobilesearch").hide();
+        $("#triggermobilenavi").click(function () {
+          $("#mobilenavi").slideToggle();
+          $("#bgmobilesearch").fadeOut();
+          if ($("#blackscreen").is(":visible") && $("#bgmobilesearch").is(":visible")) {
+            $("#blackscreen").fadeIn();
+          } else if ($("#blackscreen").is(":visible")) {
+            $("#blackscreen").fadeOut();
+          } else {
+            $("#blackscreen").fadeIn();
+          }
+        });
+        $("#blackscreen").click(function () {
+          $("#mobilenavi").slideUp();
+          $("#blackscreen").fadeOut();
+          $("#bgmobilesearch").fadeOut();
+        });
+        $("#triggermobilesearch").click(function () {
+          $("#mobilenavi").slideUp();
+          $("#bgmobilesearch").fadeToggle(700);
+          if ($("#blackscreen").is(":visible") && $("#mobilenavi").is(":visible")) {
+            $("#blackscreen").fadeIn();
+          } else if ($("#blackscreen").is(":visible")) {
+            $("#blackscreen").fadeOut();
+          } else {
+            $("#blackscreen").fadeIn();
+          }
+        });
+        $(".mobilefooterlink").hide();
+        $(".triggermobilefooterlink").click(function () {
+          var mobilefooterlink = $(this).next();
+          if (mobilefooterlink.is(":visible")) {
+            mobilefooterlink.slideUp();
+            $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
+          } else {
+            $(".mobilefooterlink:visible").slideUp();
+            $(".mobilefooterlink:visible")
+              .prev()
+              .find("i")
+              .toggleClass("fa-chevron-down fa-chevron-up");
+            mobilefooterlink.slideDown();
+            $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
+          }
+        });
+        $(".mobilefiltertrigger").click(function () {
+          $("#productfilter").slideToggle(500);
+          $(this).find("i").toggleClass("fa-filter-list fa-filter-circle-xmark");
+          var buttonText = $(this).find("h6").text();
+          if (buttonText === "Show Filter") {
+            $(this).find("h6").text("Hide Filter");
+          } else {
+            $(this).find("h6").text("Show Filter");
+          }
+        });
+
+        $(".detailfilter, .triggerfilter").click(function () {
+          $(this).parent().find(".filtercontent").slideToggle();
+          $(this).parent().find("i").toggleClass("fa-chevron-up fa-chevron-down");
+        });
+
+        <!-- PRICE RANGE SLIDER -->
+
+        const rangeInput = document.querySelectorAll(".range-input input"),
+          priceInput = document.querySelectorAll(".price-input input"),
+          range = document.querySelector(".slider .progress");
+        let priceGap = 1;
+        priceInput.forEach((input) => {
+          input.addEventListener("input", (e) => {
+            let minPrice = parseInt(priceInput[0].value),
+              maxPrice = parseInt(priceInput[1].value);
+
+            if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+              if (e.target.className === "input-min") {
+                rangeInput[0].value = minPrice;
+                range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+              } else {
+                rangeInput[1].value = maxPrice;
+                range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+              }
+            }
+          });
+        });
+        rangeInput.forEach((input) => {
+          input.addEventListener("input", (e) => {
+            let minVal = parseInt(rangeInput[0].value),
+              maxVal = parseInt(rangeInput[1].value);
+            if (maxVal - minVal < priceGap) {
+              if (e.target.className === "range-min") {
+                rangeInput[0].value = maxVal - priceGap;
+              } else {
+                rangeInput[1].value = minVal + priceGap;
+              }
+            } else {
+              priceInput[0].value = minVal;
+              priceInput[1].value = maxVal;
+              range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+              range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+            }
+          });
+        });
+      });
+
+      var scroll_pos = 0;
+      $(document).scroll(function () {
+        scroll_pos = $(this).scrollTop();
+        if (scroll_pos > 80) {
+          $("#bgheader").css({
+            position: "sticky",
+            "background-color": "#E3DB99",
+          });
+          $("#logoheader img").attr("src", "imgs/Logo/LogoHeaderblack.png");
+          $("#navi ul li a").css("color", "#77142D");
+          $(".icons ul li a").css("color", "#77142D");
+          $("#mobileicons ul li a").css("color", "#77142D");
+        } else {
+          $("#bgheader").css({
+            "background-color": "black",
+          });
+          $("#logoheader img").attr("src", "imgs/Logo/LogoHeaderwhite.png");
+          $("#navi ul li a").css("color", "#E3DB99");
+          $(".icons ul li a").css("color", "#E3DB99");
+          $("#mobileicons ul li a").css("color", "#E3DB99");
+        }
+      });
+    </script>
+    <!---------------------------------------------------------------------------------->
+  </head>
+  <body>
+    <div class="container-fluid" id="blackscreen"></div>
+    <!-- MODAL SIGN IN -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Sign in to your account</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
+          </div>
+          <div class="modal-body">
+            <form action="" method="post">
+              <div class="row">
+                <div class="col-10 offset-1">
+                  <div class="modalicons"><i class="fa-solid fa-user"></i></div>
+                  <input type="text" name="user" value="" id="userid" placeholder="Username" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-10 offset-1">
+                  <div class="modalicons"><i class="fa-solid fa-lock"></i></div>
+                  <input type="password" name="pass" value="" id="passid" placeholder="Password" />
+                </div>
+              </div>
+              <div class="row" style="height: 20px">
+                <div class="col-5 offset-1" id="rememberme">
+                  <label class="customcheckbox">
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label">Remember Me</span>
+                  </label>
+                </div>
+                <div class="col-5" id="forgotpassword">
+                  <a href=""><p>Forgot password?</p></a>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="signinmodalbtn">Sign In</button>
+            <button type="button" class="cancelmodalbtn" data-dismiss="modal">Cancel</button>
+            <div class="row" style="margin-top: 20px; margin-bottom: 0">
+              <p>Don't have an account? <a href="">Click here to register</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--	  HEADER-->
+    <div class="container-fluid" id="bgheader">
+      <div class="container">
+        <div class="row">
+          <!--				MOBILE ICONS-->
+          <div class="col-md-3 col-sm-3 col-3 d-lg-none" id="mobileicons">
+            <ul>
+              <li>
+                <a id="triggermobilenavi"><i class="fa-solid fa-bars"></i></a>
+              </li>
+              <li>
+                <a id="triggermobilesearch"><i class="fa-solid fa-magnifying-glass"></i></a>
+              </li>
+            </ul>
+          </div>
+          <!--				LOGO-->
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6" id="logoheader">
+            <a href="Index.html"><img src="imgs/Logo/LogoHeaderwhite.png" /></a>
+          </div>
+          <!--	  			Navi desktop-->
+          <div class="col-xl-6 col-lg-6 d-none d-lg-block" id="navi">
+            <ul>
+              <li><a href="Index.html">HOMES</a></li>
+              <li><a href="Product.html">WINES</a></li>
+              <li><a href="">EXPERIENCES</a></li>
+              <li><a href="">BLOG</a></li>
+              <li><a href="">ABOUT US</a></li>
+            </ul>
+          </div>
+          <!--	  			Search-->
+          <div class="col-xl-2 col-lg-2 d-none d-lg-block" id="search">
+            <form>
+              <input type="text" placeholder="Search..." id="searchfill" />
+              <button id="searchbtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+          <!--				ICONS-->
+          <div class="col-xl-1 col-lg-1 col-md-3 col-sm-3 col-3 icons">
+            <ul>
+              <li>
+                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+              </li>
+              <li>
+                <a data-toggle="modal" data-target="#exampleModalCenter"
+                  ><i class="fa-solid fa-user"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--	  MOBILE NAVI-->
+    <div class="container-fluid" id="bgmobilenavi">
+      <div class="row">
+        <div class="col-12" id="mobilenavi">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="product.html">WINES</a></li>
+            <li><a href="">EXPERIENCES</a></li>
+            <li><a href="">BLOG</a></li>
+            <li><a href="">ABOUT US</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- MOBILE SEARCH -->
+    <div class="container-fluid d-lg-none" id="bgmobilesearch">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-12" id="mobilesearch">
+            <form>
+              <input type="text" placeholder="Search..." id="mobilesearchfill" />
+              <button id="mobilesearchbtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- BANNER -->
+    <div class="container-fluid" id="bgdetailbanner"></div>
+    <!-- CONTENT -->
+    <div class="container">
+      <!-- breadcrumb -->
+      <div class="row filterbox" id="breadcrumb">
+        <div class="col-xl-12 col-lg-12 d-none d-lg-block">
+          <p>Homes / Wines</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-6 d-lg-none mobilefiltertrigger">
+          <button>
+            <i class="fa-solid fa-filter-list"></i>
+            <h6>Show Filter</h6>
+          </button>
+        </div>
+        <!-- Filter -->
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12" id="productfilter">
+          <div class="row">
+            <!-- SEARCHBOX -->
+            <div class="col-12 filterbox">
+              <h4>Search Wines</h4>
+              <form>
+                <input type="text" placeholder="Search wine by name" id="detailsearchfill" />
+                <button id="detailsearchbtn">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- FILTER WINE TYPE -->
+          <div class="row filterbox">
+            <div class="col-10 detailfilter">
+              <i class="fa-light fa-wine-glass"></i>
+              <h5>WINE TYPE</h5>
+            </div>
+            <div class="col-2 triggerfilter">
+              <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div class="col-12">
+              <hr class="horizontal-line2" />
+            </div>
+            <div class="col-12 filtercontent">
+              <label class="customcheckbox">
+                <input type="checkbox" checked="checkmark" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Red Wine</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">White Wine</span>
+              </label>
+            </div>
+          </div>
+          <!-- Filter Wine Region -->
+          <div class="row filterbox">
+            <div class="col-10 detailfilter">
+              <i class="fa-light fa-location-dot"></i>
+              <h5>WINE REGION</h5>
+            </div>
+            <div class="col-2 triggerfilter">
+              <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div class="col-12">
+              <hr class="horizontal-line2" />
+            </div>
+            <div class="col-12 filtercontent">
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">France</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Italy</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Spain</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Germany</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">England</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Portugal</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">Mexico</span>
+              </label>
+            </div>
+          </div>
+          <!-- Filter Alcohol Content -->
+          <div class="row filterbox">
+            <div class="col-10 detailfilter">
+              <i class="fa-light fa-percent"></i>
+              <h5>ALCOHOL CONTENT</h5>
+            </div>
+            <div class="col-2 triggerfilter">
+              <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div class="col-12">
+              <hr class="horizontal-line2" />
+            </div>
+            <div class="col-12 filtercontent">
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label"> &gt;15%</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">14% - 15%</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">13% - 14%</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">&lt;13%</span>
+              </label>
+            </div>
+          </div>
+          <!-- Filter Bottle Volume -->
+          <div class="row filterbox">
+            <div class="col-10 detailfilter">
+              <i class="fa-light fa-wine-bottle"></i>
+              <h5>BOTTLE VOLUME</h5>
+            </div>
+            <div class="col-2 triggerfilter">
+              <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div class="col-12">
+              <hr class="horizontal-line2" />
+            </div>
+            <div class="col-12 filtercontent">
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label"> &gt;750ml</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">750ml</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">500ml</span>
+              </label>
+              <br />
+              <label class="customcheckbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                <span class="checkbox-label">&lt;500ml</span>
+              </label>
+            </div>
+          </div>
+          <!-- Filter Price Range -->
+          <div class="row filterbox">
+            <div class="col-10 detailfilter">
+              <i class="fa-light fa-circle-dollar"></i>
+              <h5>PRICE RANGE</h5>
+            </div>
+            <div class="col-2 triggerfilter">
+              <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div class="col-12">
+              <hr class="horizontal-line2" />
+            </div>
+            <div class="col-12 filtercontent">
+              <div class="price-input">
+                <div class="field">
+                  <span>Min</span>
+                  <input type="number" class="input-min" value="0" />
+                </div>
+                <div class="separator">-</div>
+                <div class="field">
+                  <span>Max</span>
+                  <input type="number" class="input-max" value="999" />
+                </div>
+              </div>
+              <div class="slider">
+                <div class="progress"></div>
+              </div>
+              <div class="range-input">
+                <input type="range" class="range-min" min="0" max="999" value="0" step="1" />
+                <input type="range" class="range-max" min="0" max="999" value="999" step="1" />
+              </div>
+            </div>
+          </div>
+          <!-- Apply Button -->
+          <div class="row filterbox">
+            <div class="col-12">
+              <a href=""><button class="applybutton" type="submit">APPLY FILTER</button></a>
+            </div>
+            <div class="col-12">
+              <a href=""><button class="clearbutton" type="reset">CLEAR FILTER</button></a>
+            </div>
+          </div>
+        </div>
+        <!-- Product List -->
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+          <div class="row">
+            <!-- Filter Selected -->
+            <div class="col-6 filterselected">
+              <p style="font-family: bodyitalic">Filter Selected:</p>
+              <a href="" class="filterresult">
+                <p>Red Wine</p>
+                <i class="fa-solid fa-circle-xmark"></i>
+              </a>
+            </div>
+            <!-- Sort -->
+            <div class="col-6 sortbox">
+              <select name="" id="">
+                <option value="">Most Popular</option>
+                <option value="">Name: A-Z</option>
+                <option value="">Name: Z-A</option>
+                <option value="">Price Low to High</option>
+                <option value="">Price High to Low</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <hr class="horizontal-line2" />
+            </div>
+            <!-- results -->
+            <div class="col-6" style="margin-bottom: 5vh; font-family: bodyitalic">
+              <p>Showing 9 of 200 results</p>
+            </div>
+            <div class="col-6 sortbox" style="font-family: bodyitalic">
+              <p>Page 1 of 20</p>
+            </div>
+          </div>
+          <!-- Products -->
+          <div class="row">
+            <!-- Product 1 -->
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine1.png" class="img-fluid"
+              /></a>
+              <h5>Paradise Valley</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Warm and Rich</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>France</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>15%</p>
+                </div>
+              </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine2.png" class="img-fluid"
+              /></a>
+              <h5>Cenelles Telles</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Light and Fruity</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>Italy</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>14.5%</p>
+                </div>
+              </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine3.png" class="img-fluid"
+              /></a>
+              <h5>Gialinane</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Smooth and Refresh</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>Germany</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>13.5%</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine4.png" class="img-fluid"
+              /></a>
+              <h5>Emerald Bay</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Crisp and Refreshing</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>Spain</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>14%</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine5.png" class="img-fluid"
+              /></a>
+              <h5>Summer Bliss</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Smooth and Citrusy</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>England</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>14.5%</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine6.png" class="img-fluid"
+              /></a>
+              <h5>Crimson Sunset</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Bold and Spicy</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>Portugal</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>15%</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine7.png" class="img-fluid"
+              /></a>
+              <h5>Scarlet Serenade</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Velvety and Elegant</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>France</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>14.5%</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine8.png" class="img-fluid"
+              /></a>
+              <h5>Ruby Rhapsody</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Fruity and Vibrant</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>Spain</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>13.5%</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 offset-sm-0 col-10 offset-1 productbox">
+              <a href="Detail.html" class="productlink"
+                ><img src="imgs/redwine9.png" class="img-fluid"
+              /></a>
+              <h5>Amber Grove</h5>
+              <div class="row">
+                <div class="col-12">
+                  <p>Toasty and Spicy</p>
+                </div>
+                <div class="col-12">
+                  <h6>From $99</h6>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-glass"></i>
+                  <p>Sauvignon</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-location-dot"></i>
+                  <p>England</p>
+                </div>
+                <div class="col-6 leftcol">
+                  <i class="fa-light fa-wine-bottle"></i>
+                  <p>750ml</p>
+                </div>
+                <div class="col-6 rightcol">
+                  <i class="fa-light fa-percent"></i>
+                  <p>14%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Page number -->
+          <div class="row">
+            <div class="col-12 productpagenumber">
+              <ul>
+                <li><button class="activebutton">1</button></li>
+                <li><button>2</button></li>
+                <li><button>3</button></li>
+                <li><button class="activebutton">...</button></li>
+                <li><button>19</button></li>
+                <li><button>20</button></li>
+                <li>
+                  <button><i class="fa-solid fa-chevron-right"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--	  FOOTER-->
+    <!--	  	Footer Banner-->
+    <div class="container-fluid" id="bgbannerfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 pagename">
+            <h5 style="margin-top: 3vh">Join us for daily updates!</h5>
+            <a href="" class="btnbanner" style="margin-top: 1vh">SUBSCRIBE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--	  	Footer Content-->
+    <div class="container-fluid" id="bgfooter">
+      <div class="container" id="bgfootercontent">
+        <div class="row">
+          <!--	  		Footer Logo-->
+          <div class="col-xl-4 col-lg-4 d-none d-lg-block footercontent">
+            <div class="row" id="footerlogo">
+              <a href="Index.html"><img src="imgs/Logo/LogoFooter2.png" /></a>
+            </div>
+            <div class="row" style="margin-top: 10px">
+              <p>
+                Address: 22 Rue des Vignes, 75008 Paris, France
+                <br />
+                Tel: +33 1 75 43 89 12
+                <br />
+                Email: info@thewinehouse.eu
+                <br />
+                1991 The Wine House Ltd. All right reserved.
+              </p>
+            </div>
+          </div>
+          <!--	  		Footer link-->
+          <!--				 MOBILE-->
+          <!--				  Our company-->
+          <div class="col-sm-12 col-12 d-md-none mobilefootercontent triggermobilefooterlink">
+            <ul>
+              <li>
+                <a><h6>Our Company</h6></a>
+              </li>
+              <li>
+                <a><i class="fa-solid fa-chevron-down"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-12 d-md-none mobilefooterlink">
+            <ul>
+              <li><a href="">Our Story</a></li>
+              <li><a href="">Value Statement</a></li>
+              <li><a href="">Career Opportunities</a></li>
+              <li><a href="">Store Locator</a></li>
+            </ul>
+          </div>
+          <!--				  Our Service-->
+          <div class="col-sm-12 col-12 d-md-none mobilefootercontent triggermobilefooterlink">
+            <ul>
+              <li>
+                <a><h6>Our Services</h6></a>
+              </li>
+              <li>
+                <a><i class="fa-solid fa-chevron-down"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-12 d-md-none mobilefooterlink">
+            <ul>
+              <li><a href="product.html">Red Wines</a></li>
+              <li><a href="product.html">White Wines</a></li>
+              <li><a href="product.html">Other Wines</a></li>
+              <li><a href="">Events</a></li>
+              <li><a href="">Visit Tours</a></li>
+              <li><a href="">Blog</a></li>
+            </ul>
+          </div>
+          <!--				  Customer Care-->
+          <div class="col-sm-12 col-12 d-md-none mobilefootercontent triggermobilefooterlink">
+            <ul>
+              <li>
+                <a><h6>Customer Services</h6> </a>
+              </li>
+              <li>
+                <a><i class="fa-solid fa-chevron-down"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-12 d-md-none mobilefooterlink">
+            <ul>
+              <li><a href="">Contact Us</a></li>
+              <li><a href="">Order Tracking</a></li>
+              <li><a href="">Promotion News</a></li>
+              <li><a href="">Members</a></li>
+              <li><a href="">Policy</a></li>
+            </ul>
+          </div>
+          <!--				  DESKTOP-->
+          <div class="col-xl-2 col-lg-2 col-md-3 d-none d-md-block footercontent">
+            <h6>Our Company</h6>
+            <ul>
+              <li><a href="">About Us</a></li>
+              <li><a href="">Value Statement</a></li>
+              <li><a href="">Career Opportunities</a></li>
+              <li><a href="">Store Locator</a></li>
+            </ul>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-3 d-none d-md-block footercontent">
+            <h6>Our Services</h6>
+            <ul>
+              <li><a href="product.html">Red Wines</a></li>
+              <li><a href="product.html">White Wines</a></li>
+              <li><a href="product.html">Other Wines</a></li>
+              <li><a href="">Events</a></li>
+              <li><a href="">Visit Tours</a></li>
+              <li><a href="">Blog</a></li>
+            </ul>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-3 d-none d-md-block footercontent">
+            <h6>Customer Care</h6>
+            <ul>
+              <li><a href="">Contact Us</a></li>
+              <li><a href="">Order Tracking</a></li>
+              <li><a href="">Promotion News</a></li>
+              <li><a href="">Members</a></li>
+              <li><a href="">Policy</a></li>
+            </ul>
+          </div>
+          <!--	  		App and Social Media-->
+          <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 footercontent">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6">
+                <h6>Download App</h6>
+                <div class="col-12" id="appledownload">
+                  <a href=""><img src="imgs/appdownload1.png" /></a>
+                </div>
+                <div class="col-12" id="ggplaydownload">
+                  <a href=""><img src="imgs/appdownload2.png" /></a>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6">
+                <h6>Follow Us</h6>
+                <div class="col-xl-12" id="socialmediaicon">
+                  <ul>
+                    <li>
+                      <a href=""><i class="fa-brands fa-facebook-square"></i></a>
+                    </li>
+                    <li>
+                      <a href=""><i class="fa-brands fa-instagram-square"></i></a>
+                    </li>
+                    <li>
+                      <a href=""><i class="fa-brands fa-twitter-square"></i></a>
+                    </li>
+                    <li>
+                      <a href=""><i class="fa-brands fa-youtube-square"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="d-md-none col-sm-6 offset-sm-6 col-6 offset-6 mobilecopyright">
+                1991 The Wine House Ltd.<br />All right reserved.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 offset-md-0 d-lg-none d-none d-md-block mobilecopyright">
+            1991 The Wine House Ltd. All right reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

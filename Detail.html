@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DetailPage</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet" />
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="js/owlcarousel/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="js/owlcarousel/assets/owl.theme.default.min.css" />
+
+    <!-- Style CSS -->
+    <link href="css/common.css" rel="stylesheet" />
+    <link href="css/detail.css" rel="stylesheet" />
+
+    <!-- Fontawesome-->
+    <link href="css/css/all.min.css" rel="stylesheet" />
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="js/owlcarousel/owl.carousel.min.js"></script>
+    <!---------------------------------------------------------------------------------->
+    <!--	  JQUERY-->
+    <script>
+      $(document).ready(function () {
+        $("#mobilenavi").hide();
+        $("#blackscreen").hide();
+        $("#bgmobilesearch").hide();
+        $("#triggermobilenavi").click(function () {
+          $("#mobilenavi").slideToggle();
+          $("#bgmobilesearch").fadeOut();
+          if ($("#blackscreen").is(":visible") && $("#bgmobilesearch").is(":visible")) {
+            $("#blackscreen").fadeIn();
+          } else if ($("#blackscreen").is(":visible")) {
+            $("#blackscreen").fadeOut();
+          } else {
+            $("#blackscreen").fadeIn();
+          }
+        });
+        $("#blackscreen").click(function () {
+          $("#mobilenavi").slideUp();
+          $("#blackscreen").fadeOut();
+          $("#bgmobilesearch").fadeOut();
+        });
+        $("#triggermobilesearch").click(function () {
+          $("#mobilenavi").slideUp();
+          $("#bgmobilesearch").fadeToggle(700);
+          if ($("#blackscreen").is(":visible") && $("#mobilenavi").is(":visible")) {
+            $("#blackscreen").fadeIn();
+          } else if ($("#blackscreen").is(":visible")) {
+            $("#blackscreen").fadeOut();
+          } else {
+            $("#blackscreen").fadeIn();
+          }
+        });
+        $(".mobilefooterlink").hide();
+        $(".triggermobilefooterlink").click(function () {
+          var mobilefooterlink = $(this).next();
+          if (mobilefooterlink.is(":visible")) {
+            mobilefooterlink.slideUp();
+            $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
+          } else {
+            $(".mobilefooterlink:visible").slideUp();
+            $(".mobilefooterlink:visible")
+              .prev()
+              .find("i")
+              .toggleClass("fa-chevron-down fa-chevron-up");
+            mobilefooterlink.slideDown();
+            $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
+          }
+        });
+
+        $(".detailproductcarousel").owlCarousel({
+          loop: true,
+          dots: false,
+          center: true,
+          autoplay: true,
+          animateOut: "fadeOut",
+          animateIn: "fadeIn",
+          smartSpeed: 0,
+          autoplayTimeout: 200,
+          autoplayHoverPause: true,
+          responsiveClass: true,
+          responsive: {
+            0: { items: 1 },
+            480: { items: 1 },
+            576: { items: 1 },
+            768: { items: 1 },
+            992: { items: 1 },
+            1200: { items: 1 },
+          },
+        });
+
+        $("#customerreview").owlCarousel({
+          loop: true,
+          center: true,
+          margin: 50,
+          dotsEach: true,
+          autoplay: true,
+          autoplayTimeout: 7000,
+          autoplayHoverPause: true,
+          responsiveClass: true,
+          responsive: {
+            0: { items: 1 },
+            480: { items: 1 },
+            576: { items: 1 },
+            768: { items: 2 },
+            992: { items: 2 },
+            1200: { items: 2 },
+          },
+        });
+
+        $(".productcarousel").owlCarousel({
+          loop: true,
+          dotsEach: true,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          responsiveClass: true,
+          responsive: {
+            0: { items: 1 },
+            480: { items: 1 },
+            576: { items: 2 },
+            768: { items: 2 },
+            992: { items: 3 },
+            1200: { items: 4 },
+          },
+        });
+      });
+
+      var scroll_pos = 0;
+      $(document).scroll(function () {
+        scroll_pos = $(this).scrollTop();
+        if (scroll_pos > 80) {
+          $("#bgheader").css({
+            position: "sticky",
+            "background-color": "#E3DB99",
+          });
+          $("#logoheader img").attr("src", "imgs/Logo/LogoHeaderblack.png");
+          $("#navi ul li a").css("color", "#77142D");
+          $(".icons ul li a").css("color", "#77142D");
+          $("#mobileicons ul li a").css("color", "#77142D");
+        } else {
+          $("#bgheader").css({
+            "background-color": "black",
+          });
+          $("#logoheader img").attr("src", "imgs/Logo/LogoHeaderwhite.png");
+          $("#navi ul li a").css("color", "#E3DB99");
+          $(".icons ul li a").css("color", "#E3DB99");
+          $("#mobileicons ul li a").css("color", "#E3DB99");
+        }
+
+        $(".smallimagebox img").click(function () {
+          var linkimg = $(this).attr("src");
+          $(".smallimagebox img.active").removeClass("active");
+          $(this).addClass("active");
+          var index = $(this).index();
+          $(".detailbox div.active").removeClass("active");
+          $(".detailbox div").eq(index).addClass("active");
+          $(".detailbox div.nonactive").removeClass("nonactive");
+          $(".detailbox div.active").siblings().addClass("nonactive");
+          $(".bigimagebox img").fadeOut(200, function () {
+            $(".bigimagebox img").attr("src", linkimg);
+            $(".bigimagebox img").fadeIn(200);
+          });
+        });
+      });
+    </script>
+    <!---------------------------------------------------------------------------------->
+  </head>
+  <body>
+    <div class="container-fluid" id="blackscreen"></div>
+    <!-- MODAL SIGN IN -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Sign in to your account</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+          </div>
+          <div class="modal-body">
+            <form action="" method="post">
+              <div class="row">
+                <div class="col-10 offset-1">
+                  <div class="modalicons"><i class="fa-solid fa-user"></i></div>
+                  <input type="text" name="user" value="" id="userid" placeholder="Username" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-10 offset-1">
+                  <div class="modalicons"><i class="fa-solid fa-lock"></i></div>
+                  <input type="password" name="pass" value="" id="passid" placeholder="Password" />
+                </div>
+              </div>
+              <div class="row" style="height: 20px">
+                <div class="col-5 offset-1" id="rememberme">
+                  <label class="customcheckbox">
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label">Remember Me</span>
+                  </label>
+                </div>
+                <div class="col-5" id="forgotpassword">
+                  <a href=""><p>Forgot password?</p></a>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="signinmodalbtn">Sign In</button>
+            <button type="button" class="cancelmodalbtn" data-dismiss="modal">Cancel</button>
+            <div class="row" style="margin-top: 20px; margin-bottom: 0">
+              <p>Don't have an account? <a href="">Click here to register</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--	  HEADER-->
+    <div class="container-fluid" id="bgheader">
+      <div class="container">
+        <div class="row">
+          <!--				MOBILE ICONS-->
+          <div class="col-md-3 col-sm-3 col-3 d-lg-none" id="mobileicons">
+            <ul>
+              <li>
+                <a id="triggermobilenavi"><i class="fa-solid fa-bars"></i></a>
+              </li>
+              <li>
+                <a id="triggermobilesearch"><i class="fa-solid fa-magnifying-glass"></i></a>
+              </li>
+            </ul>
+          </div>
+          <!--				LOGO-->
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6" id="logoheader">
+            <a href="Index.html"><img src="imgs/Logo/LogoHeaderwhite.png" /></a>
+          </div>
+          <!--	  			Navi desktop-->
+          <div class="col-xl-6 col-lg-6 d-none d-lg-block" id="navi">
+            <ul>
+              <li><a href="Index.html">HOMES</a></li>
+              <li><a href="Product.html">WINES</a></li>
+              <li><a href="">EXPERIENCES</a></li>
+              <li><a href="">BLOG</a></li>
+              <li><a href="">ABOUT US</a></li>
+            </ul>
+          </div>
+          <!--	  			Search-->
+          <div class="col-xl-2 col-lg-2 d-none d-lg-block" id="search">
+            <form>
+              <input type="text" placeholder="Search..." id="searchfill" />
+              <button id="searchbtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+          <!--				ICONS-->
+          <div class="col-xl-1 col-lg-1 col-md-3 col-sm-3 col-3 icons">
+            <ul>
+              <li>
+                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+              </li>
+              <li>
+                <a data-toggle="modal" data-target="#exampleModalCenter"
+                  ><i class="fa-solid fa-user"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--	  MOBILE NAVI-->
+    <div class="container-fluid" id="bgmobilenavi">
+      <div class="row">
+        <div class="col-12" id="mobilenavi">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="product.html">WINES</a></li>
+            <li><a href="">EXPERIENCES</a></li>
+            <li><a href="">BLOG</a></li>
+            <li><a href="">ABOUT US</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- MOBILE SEARCH -->
+    <div class="container-fluid d-lg-none" id="bgmobilesearch">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-12" id="mobilesearch">
+            <form>
+              <input type="text" placeholder="Search..." id="mobilesearchfill" />
+              <button id="mobilesearchbtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- BANNER/PRODUCT -->
+    <div class="container-fluid" id="bgbannerproduct">
+      <div class="container">
+        <div class="row" id="bannerproductcontent">
+          <!-- INFO -->
+          <div
+            class="col-xl-3 offset-xl-0 col-lg-3 offset-lg-0 col-md-4 offset-md-0 order-md-0 col-sm-6 offset-sm-0 order-sm-1 col-6 offset-0 order-1 productcontent">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 d-none d-lg-block" style="padding: 0">
+                Home / Wine / Red Wines
+              </div>
+            </div>
+            <br />
+            <!-- info -->
+            <div class="row">
+              <h3>Charlottee Richards</h3>
+              <br />
+              <h5>Red Wine Bottle</h5>
+              <br />
+              <p>A modern tempranillo that pairs approachability and drinkability.</p>
+            </div>
+            <!-- Table -->
+            <div class="row">
+              <table>
+                <tr>
+                  <th>Volume</th>
+                  <td>750ml</td>
+                </tr>
+                <tr>
+                  <th>Acc/Vol</th>
+                  <td>15%</td>
+                </tr>
+                <tr>
+                  <th>Varietal</th>
+                  <td>Sauvignon</td>
+                </tr>
+                <tr>
+                  <th>Country</th>
+                  <td>France</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="col-xl-4 offset-xl-1 col-lg-4 offset-lg-1 col-md-4 offset-md-0 order-md-1 col-sm-6 offset-sm-0 order-sm-0 col-6 offset-0 order-0 productimage">
+            <div class="row owl-carousel owl-theme detailproductcarousel">
+              <div>
+                <img src="imgs/detail-product/detailproduct1.png" alt="" class="img-fluid" />
+              </div>
+              <div>
+                <img src="imgs/detail-product/detailproduct2.png" alt="" class="img-fluid" />
+              </div>
+              <div>
+                <img src="imgs/detail-product/detailproduct3.png" alt="" class="img-fluid" />
+              </div>
+              <div>
+                <img src="imgs/detail-product/detailproduct4.png" alt="" class="img-fluid" />
+              </div>
+              <div>
+                <img src="imgs/detail-product/detailproduct5.png" alt="" class="img-fluid" />
+              </div>
+              <div>
+                <img src="imgs/detail-product/detailproduct6.png" alt="" class="img-fluid" />
+              </div>
+              <div>
+                <img src="imgs/detail-product/detailproduct7.png" alt="" class="img-fluid" />
+              </div>
+              <div>
+                <img src="imgs/detail-product/detailproduct8.png" alt="" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+          <!-- Buy Btn -->
+          <div
+            class="col-xl-3 offset-xl-1 col-lg-3 offset-lg-1 col-md-4 offset-md-0 order-md-2 col-sm-6 offset-sm-6 order-sm-2 col-6 offset-6 order-2 productcontent buyproduct">
+            <div class="row">
+              <p>The more aged, the better wine tasted! Select your desired bottle:</p>
+            </div>
+            <div class="row buyoption">
+              <h6>Year:</h6>
+              <select>
+                <option value="2010">2011</option>
+                <option value="2012">2012</option>
+                <option value="2012">2013</option>
+                <option value="2012">2014</option>
+              </select>
+            </div>
+            <hr class="horizontal-line2" />
+            <div class="row buyoption">
+              <h6>Quantity:</h6>
+              <form>
+                <button id="minusbtn"><i class="fa-solid fa-minus"></i></button>
+                <input type="text" placeholder="01" id="quantityfill" />
+                <button id="plusbtn"><i class="fa-solid fa-plus"></i></button>
+              </form>
+            </div>
+            <hr class="horizontal-line2" />
+            <div class="row buyoption">
+              <h6>Price:</h6>
+              <h4>99.00$</h4>
+            </div>
+            <div class="row" style="text-align: center; margin-top: 1vh">
+              <a href="" class="btnbanner" style="width: 100%">ADD TO CART</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- DETAILS -->
+    <div class="container">
+      <!-- PRODUCT NOTE -->
+      <div class="row">
+        <!-- Image -->
+        <div
+          class="col-xl-6 col-lg-6 order-lg-0 offset-lg-0 col-md-10 offset-md-1 order-md-1 col-sm-10 offset-sm-1 order-sm-1 col-10 offset-1 order-1 generalcontent">
+          <img src="imgs/detail-tastingnote.jpg" alt="" class="img-fluid" />
+        </div>
+        <!-- Content -->
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 generalcontent">
+          <h4>Tasting notes from the wine's maker</h4>
+          <h5>About the wine</h5>
+          <p>
+            Charlotee Richard is a crisp and refreshing Sauvignon Blanc that boasts a pale straw
+            color with green highlights. On the nose, it delivers aromas of zesty citrus and
+            tropical fruit, such as passionfruit and pineapple, alongside hints of grass and herbs.
+            On the palate, it offers flavors of juicy grapefruit and lime, balanced with subtle
+            minerality and a bright acidity that leads to a clean and refreshing finish. Enjoy
+            Charlotee Richard chilled as an aperitif or pair it with seafood dishes, light salads,
+            or grilled vegetables.
+          </p>
+          <h5>When to drink</h5>
+          <p>Enjoy now after decanting for 45 minutes or cellar through 2038.</p>
+          <h5>Best dishes to match</h5>
+          <p>Seasonal dishes that pair beautifully with Charlotee Richard:</p>
+          <ul>
+            <li>Fresh seafood, such as oysters, shrimp, or grilled fish.</li>
+            <li>Light salads with citrus-based dressings.</li>
+            <li>Grilled vegetables, such as asparagus, zucchini, or bell peppers.</li>
+            <li>Soft and creamy cheeses, such as goat cheese or brie</li>
+            <li>Sushi or sashimi.</li>
+            <li>Light pasta dishes with olive oil, garlic, and herbs</li>
+          </ul>
+        </div>
+      </div>
+      <!-- PAIRING SUGGEST -->
+      <!-- pagename -->
+      <div class="row">
+        <div class="col-12 pagename">
+          <h4>Pairing Suggestion</h4>
+          <p>Check out our guide to cook some dishes that goes well with this drink</p>
+        </div>
+      </div>
+      <!-- Detail -->
+      <div class="row">
+        <!-- Imagebox -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 imagebox">
+          <div class="row">
+            <!-- Small Image -->
+            <div
+              class="col-xl-2 col-lg-3 order-lg-0 col-md-12 col-sm-3 col-3 order-1 smallimagebox">
+              <img src="imgs/detail-recommendfood1.jpg" alt="" class="img-fluid active" />
+              <img src="imgs/detail-recommendfood2.jpg" alt="" class="img-fluid" />
+              <img src="imgs/detail-recommendfood3.jpg" alt="" class="img-fluid" />
+            </div>
+            <!-- Big Image -->
+            <div class="col-xl-10 col-lg-9 col-md-12 col-sm-9 col-9 bigimagebox">
+              <img src="imgs/detail-recommendfood1.jpg" alt="" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+        <!-- Contentbox -->
+        <div
+          class="col-xl-6 col-lg-6 col-md-6 order-md-1 col-sm-12 order-sm-2 col-12 order-2 detailbox">
+          <!-- Content1 -->
+          <div class="active">
+            <h5>Grilled Ribeye Steak with Herb Butter</h5>
+            <p style="text-decoration: underline">Ingredients:</p>
+            <ul>
+              <li>2 Ribeye Steaks, about 1 pound each</li>
+              <li>1 tablespoon of Olive Oil</li>
+              <li>Salt and Pepper</li>
+              <li>4 tablespoons of Unsalted Butter, softened</li>
+              <li>1 Garlic Clove, minced</li>
+              <li>1 tablespoon of Fresh Parsley, chopped</li>
+              <li>1 tablespoon of Fresh Rosemary, chopped</li>
+              <li>1 tablespoon of Fresh Thyme, chopped</li>
+            </ul>
+            <p style="text-decoration: underline">How To Cook:</p>
+            <p>
+              The robust flavors of a red wine pair well with a juicy and flavorful steak. Season
+              the ribeye with salt and pepper, grill to your desired doneness, and top with a
+              homemade herb butter made from fresh herbs, garlic, and butter.
+            </p>
+          </div>
+          <!-- Content2 -->
+          <div class="nonactive">
+            <h5>Mushroom Risotto</h5>
+            <p style="text-decoration: underline">Ingredients:</p>
+            <ul>
+              <li>1 1/2 cups arborio rice</li>
+              <li>1/2 cup dry white wine</li>
+              <li>4 cups chicken or vegetable broth</li>
+              <li>1 cup sliced mushrooms</li>
+              <li>1/2 cup grated Parmesan cheese</li>
+              <li>2 tablespoons unsalted butter</li>
+              <li>1 small onion, finely chopped</li>
+              <li>2 cloves garlic, minced</li>
+              <li>1 tablespoon olive oil</li>
+              <li>Salt and pepper, to taste</li>
+              <li>Fresh parsley, chopped, for garnish</li>
+            </ul>
+            <p style="text-decoration: underline">How To Cook:</p>
+            <p>
+              The earthy flavors of mushrooms complement the subtle notes of cherry and spice in a
+              red wine. Sauté mushrooms in butter and garlic, then stir them into a creamy risotto
+              made with arborio rice, chicken stock, and Parmesan cheese.
+            </p>
+          </div>
+          <!-- Content3 -->
+          <div class="nonactive">
+            <h5>Pan-Seared Scallops with Lemon Garlic Sauce</h5>
+            <p style="text-decoration: underline">Ingredients:</p>
+            <ul>
+              <li>1 pound sea scallops, patted dry</li>
+              <li>1/4 cup all-purpose flour</li>
+              <li>2 tablespoons unsalted butter</li>
+              <li>2 tablespoons olive oil</li>
+              <li>3 cloves garlic, minced</li>
+              <li>1/4 cup dry white wine</li>
+              <li>1/4 cup chicken or vegetable broth</li>
+              <li>1 lemon, juiced</li>
+              <li>1 tablespoon chopped fresh parsley</li>
+              <li>Salt and pepper, to taste</li>
+            </ul>
+            <p style="text-decoration: underline">How To Cook:</p>
+            <p>
+              The delicate sweetness of scallops pairs well with a light-bodied red wine. Season the
+              scallops with salt and pepper, and sear them in butter until golden brown. Then, make
+              a lemon garlic sauce with garlic, lemon juice, white wine, and butter.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- CUSTOMER REVIEWS -->
+      <div class="row">
+        <div class="col-12 pagename">
+          <h4>Customer Reviews</h4>
+        </div>
+      </div>
+      <div class="row owl-carousel owl-theme" id="customerreview">
+        <!-- Review1 -->
+        <div class="col-12">
+          <div class="container reviewbox">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-4 order-lg-0 col-md-12 order-md-1 col-sm-12 order-md-1 col-12 order-12">
+                <div class="row">
+                  <div class="col-12 customeravatar">
+                    <img src="imgs/customer1.png" alt="" class="img-fluid" />
+                  </div>
+                  <div class="col-12 customername">
+                    <h5>Kristen William</h5>
+                    <p>London, UK</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 reviewcontent">
+                <h5>Highly recommend!</h5>
+                <p>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. "
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Review2 -->
+        <div class="col-12">
+          <div class="container reviewbox">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-4 order-lg-0 col-md-12 order-md-1 col-sm-12 order-md-1 col-12 order-12">
+                <div class="row">
+                  <div class="col-12 customeravatar">
+                    <img src="imgs/customer2.png" alt="" class="img-fluid" />
+                  </div>
+                  <div class="col-12 customername">
+                    <h5>Edward Davis</h5>
+                    <p>Paris, France</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 reviewcontent">
+                <h5>I'm impressed!</h5>
+                <p>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. "
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Review3 -->
+        <div class="col-12">
+          <div class="container reviewbox">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-4 order-lg-0 col-md-12 order-md-1 col-sm-12 order-md-1 col-12 order-12">
+                <div class="row">
+                  <div class="col-12 customeravatar">
+                    <img src="imgs/customer3.png" alt="" class="img-fluid" />
+                  </div>
+                  <div class="col-12 customername">
+                    <h5>Kira Reynolds</h5>
+                    <p>Berlin, Germany</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 reviewcontent">
+                <h5>Must try!</h5>
+                <p>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. "
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Review4 -->
+        <div class="col-12">
+          <div class="container reviewbox">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-4 order-lg-0 col-md-12 order-md-1 col-sm-12 order-md-1 col-12 order-12">
+                <div class="row">
+                  <div class="col-12 customeravatar">
+                    <img src="imgs/customer4.png" alt="" class="img-fluid" />
+                  </div>
+                  <div class="col-12 customername">
+                    <h5>Max Avery</h5>
+                    <p>Venice, Italy</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 reviewcontent">
+                <h5>Fantastico!</h5>
+                <p>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. "
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Review5 -->
+        <div class="col-12">
+          <div class="container reviewbox">
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-4 order-lg-0 col-md-12 order-md-1 col-sm-12 order-md-1 col-12 order-12">
+                <div class="row">
+                  <div class="col-12 customeravatar">
+                    <img src="imgs/customer5.png" alt="" class="img-fluid" />
+                  </div>
+                  <div class="col-12 customername">
+                    <h5>Ethan Taylor</h5>
+                    <p>Madrid, Spain</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 reviewcontent">
+                <h5>Gracias!</h5>
+                <p>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. "
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- RECOMMENDED ITEMS -->
+      <div class="row">
+        <div class="col-12 pagename">
+          <h4>You may also like</h4>
+        </div>
+      </div>
+      <div class="row owl-carousel owl-theme productcarousel">
+        <div class="col-12 productbox">
+          <a href="Detail.html" class="productlink"
+            ><img src="imgs/redwine1.png" class="img-fluid"
+          /></a>
+          <h5>Emerald Bay</h5>
+          <p>Crisp and Refreshing</p>
+          <h6>From $99</h6>
+        </div>
+        <div class="col-12 productbox">
+          <a href="Detail.html" class="productlink"
+            ><img src="imgs/redwine2.png" class="img-fluid"
+          /></a>
+          <h5>Paradise Valley</h5>
+          <p>Lively and Zesty</p>
+          <h6>From $99</h6>
+        </div>
+        <div class="col-12 productbox">
+          <a href="Detail.html" class="productlink"
+            ><img src="imgs/redwine3.png" class="img-fluid"
+          /></a>
+          <h5>Summer Bliss</h5>
+          <p>Smooth and Citrusy</p>
+          <h6>From $99</h6>
+        </div>
+        <div class="col-12 productbox">
+          <a href="Detail.html" class="productlink"
+            ><img src="imgs/redwine4.png" class="img-fluid"
+          /></a>
+          <h5>Crimson Sunset</h5>
+          <p>Bold and Spicy</p>
+          <h6>From $99</h6>
+        </div>
+        <div class="col-12 productbox">
+          <a href="Detail.html" class="productlink"
+            ><img src="imgs/redwine5.png" class="img-fluid"
+          /></a>
+          <h5>Scarlet Serenade</h5>
+          <p>Velvety and Elegant</p>
+          <h6>From $99</h6>
+        </div>
+        <div class="col-12 productbox">
+          <a href="Detail.html" class="productlink"
+            ><img src="imgs/redwine6.png" class="img-fluid"
+          /></a>
+          <h5>Ruby Rhapsody</h5>
+          <p>Fruity and Vibrant</p>
+          <h6>From $99</h6>
+        </div>
+      </div>
+    </div>
+    <!--	  FOOTER-->
+    <!--	  	Footer Banner-->
+    <div class="container-fluid" id="bgbannerfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 pagename">
+            <h5 style="margin-top: 3vh">Join us for daily updates!</h5>
+            <a href="" class="btnbanner" style="margin-top: 1vh">SUBSCRIBE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--	  	Footer Content-->
+    <div class="container-fluid" id="bgfooter">
+      <div class="container" id="bgfootercontent">
+        <div class="row">
+          <!--	  		Footer Logo-->
+          <div class="col-xl-4 col-lg-4 d-none d-lg-block footercontent">
+            <div class="row" id="footerlogo">
+              <a href="Index.html"><img src="imgs/Logo/LogoFooter2.png" /></a>
+            </div>
+            <div class="row" style="margin-top: 10px">
+              <p>
+                Address: 22 Rue des Vignes, 75008 Paris, France
+                <br />
+                Tel: +33 1 75 43 89 12
+                <br />
+                Email: info@thewinehouse.eu
+                <br />
+                1991 The Wine House Ltd. All right reserved.
+              </p>
+            </div>
+          </div>
+          <!--	  		Footer link-->
+          <!--				 MOBILE-->
+          <!--				  Our company-->
+          <div class="col-sm-12 col-12 d-md-none mobilefootercontent triggermobilefooterlink">
+            <ul>
+              <li>
+                <a><h6>Our Company</h6></a>
+              </li>
+              <li>
+                <a><i class="fa-solid fa-chevron-down"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-12 d-md-none mobilefooterlink">
+            <ul>
+              <li><a href="">Our Story</a></li>
+              <li><a href="">Value Statement</a></li>
+              <li><a href="">Career Opportunities</a></li>
+              <li><a href="">Store Locator</a></li>
+            </ul>
+          </div>
+          <!--				  Our Service-->
+          <div class="col-sm-12 col-12 d-md-none mobilefootercontent triggermobilefooterlink">
+            <ul>
+              <li>
+                <a><h6>Our Services</h6></a>
+              </li>
+              <li>
+                <a><i class="fa-solid fa-chevron-down"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-12 d-md-none mobilefooterlink">
+            <ul>
+              <li><a href="product.html">Red Wines</a></li>
+              <li><a href="product.html">White Wines</a></li>
+              <li><a href="product.html">Other Wines</a></li>
+              <li><a href="">Events</a></li>
+              <li><a href="">Visit Tours</a></li>
+              <li><a href="">Blog</a></li>
+            </ul>
+          </div>
+          <!--				  Customer Care-->
+          <div class="col-sm-12 col-12 d-md-none mobilefootercontent triggermobilefooterlink">
+            <ul>
+              <li>
+                <a><h6>Customer Services</h6> </a>
+              </li>
+              <li>
+                <a><i class="fa-solid fa-chevron-down"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-12 d-md-none mobilefooterlink">
+            <ul>
+              <li><a href="">Contact Us</a></li>
+              <li><a href="">Order Tracking</a></li>
+              <li><a href="">Promotion News</a></li>
+              <li><a href="">Members</a></li>
+              <li><a href="">Policy</a></li>
+            </ul>
+          </div>
+          <!--				  DESKTOP-->
+          <div class="col-xl-2 col-lg-2 col-md-3 d-none d-md-block footercontent">
+            <h6>Our Company</h6>
+            <ul>
+              <li><a href="">About Us</a></li>
+              <li><a href="">Value Statement</a></li>
+              <li><a href="">Career Opportunities</a></li>
+              <li><a href="">Store Locator</a></li>
+            </ul>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-3 d-none d-md-block footercontent">
+            <h6>Our Services</h6>
+            <ul>
+              <li><a href="product.html">Red Wines</a></li>
+              <li><a href="product.html">White Wines</a></li>
+              <li><a href="product.html">Other Wines</a></li>
+              <li><a href="">Events</a></li>
+              <li><a href="">Visit Tours</a></li>
+              <li><a href="">Blog</a></li>
+            </ul>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-3 d-none d-md-block footercontent">
+            <h6>Customer Care</h6>
+            <ul>
+              <li><a href="">Contact Us</a></li>
+              <li><a href="">Order Tracking</a></li>
+              <li><a href="">Promotion News</a></li>
+              <li><a href="">Members</a></li>
+              <li><a href="">Policy</a></li>
+            </ul>
+          </div>
+          <!--	  		App and Social Media-->
+          <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 footercontent">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6">
+                <h6>Download App</h6>
+                <div class="col-12" id="appledownload">
+                  <a href=""><img src="imgs/appdownload1.png" /></a>
+                </div>
+                <div class="col-12" id="ggplaydownload">
+                  <a href=""><img src="imgs/appdownload2.png" /></a>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-6">
+                <h6>Follow Us</h6>
+                <div class="col-xl-12" id="socialmediaicon">
+                  <ul>
+                    <li>
+                      <a href=""><i class="fa-brands fa-facebook-square"></i></a>
+                    </li>
+                    <li>
+                      <a href=""><i class="fa-brands fa-instagram-square"></i></a>
+                    </li>
+                    <li>
+                      <a href=""><i class="fa-brands fa-twitter-square"></i></a>
+                    </li>
+                    <li>
+                      <a href=""><i class="fa-brands fa-youtube-square"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="d-md-none col-sm-6 offset-sm-6 col-6 offset-6 mobilecopyright">
+                1991 The Wine House Ltd.<br />All right reserved.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 offset-md-0 d-lg-none d-none d-md-block mobilecopyright">
+            1991 The Wine House Ltd. All right reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
